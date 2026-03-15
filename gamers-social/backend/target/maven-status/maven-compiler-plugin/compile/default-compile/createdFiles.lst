@@ -1,0 +1,4 @@
+com\gamerssocial\backend\repository\JogoRepository.class
+com\gamerssocial\backend\model\Jogo.class
+com\gamerssocial\backend\controller\JogoController.class
+com\gamerssocial\backend\GamersSocialApplication.class
