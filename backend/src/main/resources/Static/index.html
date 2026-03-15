@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamers Social</title>
+    <!-- Ícone da aba do navegador (favicon) -->
+    <link rel="icon" href="https://store.steampowered.com/favicon.ico" type="image/x-icon">
+    <style>
+        /* Paleta de cores baseada na Steam */
+        body { 
+            font-family: 'Motiva Sans', 'Segoe UI', Arial, sans-serif; 
+            background-color: #1b2838; /* Azul escuro fundo da Steam */
+            color: #c6d4df; /* Texto padrão cinza claro */
+            margin: 0; 
+            padding: 20px; 
+        }
+        
+        .container { 
+            max-width: 650px; 
+            margin: auto; 
+            background: rgba(0, 0, 0, 0.2); /* Fundo da caixa escurecido */
+            padding: 30px; 
+            border-radius: 4px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+        }
+
+        /* Cabeçalho */
+        .header-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            color: #ffffff;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .header-title img {
+            width: 40px;
+            height: 40px;
+        }
+
+        h2 { 
+            color: #ffffff; 
+            border-bottom: 1px solid #2a475e; 
+            padding-bottom: 10px;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Inputs de texto estilo Steam */
+        .form-group { margin-bottom: 15px; }
+        input { 
+            width: 100%; 
+            padding: 12px; 
+            margin-top: 5px; 
+            background-color: #323e4c; /* Fundo do input */
+            border: 1px solid #2a475e; 
+            border-radius: 3px; 
+            color: #ffffff;
+            box-sizing: border-box; 
+        }
+        input:focus {
+            outline: none;
+            border-color: #66c0f4;
+            background-color: #3b4959;
+        }
+        input::placeholder { color: #8f98a0; }
+
+        /* Botão principal estilo Steam (Azul degradê) */
+        button { 
+            background: linear-gradient(to right, #47bfff 5%, #1a44c2 60%);
+            background-position: 25%;
+            background-size: 330% 100%;
+            color: white; 
+            border: none; 
+            padding: 12px; 
+            width: 100%; 
+            border-radius: 2px; 
+            cursor: pointer; 
+            font-size: 16px; 
+            font-weight: bold;
+            margin-top: 10px; 
+            transition: all 0.3s ease;
+        }
+        button:hover { 
+            background-position: 100%;
+            transform: scale(1.02);
+        }
+
+        /* Lista de Jogos */
+        .game-list { margin-top: 40px; }
+        .game-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            background: rgba(0, 0, 0, 0.4); 
+            padding: 15px; 
+            border-radius: 2px; 
+            border-left: 4px solid #66c0f4; 
+            margin-bottom: 10px; 
+            transition: background 0.2s;
+        }
+        .game-item:hover { background: rgba(0, 0, 0, 0.6); }
+        
+        .game-info strong { font-size: 18px; display: block; color: #ffffff; }
+        .game-info span { color: #8f98a0; font-size: 13px; margin-top: 4px; display: block;}
+        
+        /* Botão Excluir */
+        .btn-delete { 
+            background: rgba(255, 255, 255, 0.1); 
+            width: auto; 
+            padding: 6px 12px; 
+            font-size: 12px; 
+            margin-top: 0; 
+            color: #8f98a0;
+            border-radius: 2px;
+        }
+        .btn-delete:hover { 
+            background: #d9534f; 
+            color: white;
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header-title">
+        <!-- Ícone genérico de controle -->
+        <svg fill="#ffffff" width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 9 18.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+        Gamers Social
+    </div>
+    
+    <h2>Adicionar à Biblioteca</h2>
+    <div class="form-group">
+        <input type="text" id="nome" placeholder="Título (ex: God of War)">
+    </div>
+    <div class="form-group">
+        <input type="text" id="genero" placeholder="Gênero (ex: RPG, Ação)">
+    </div>
+    <div class="form-group">
+        <input type="text" id="plataforma" placeholder="Plataforma (ex: PC, PS5)">
+    </div>
+    <button onclick="salvarJogo()">+ Adicionar Jogo</button>
+
+    <div class="game-list">
+        <h2>Minha Coleção</h2>
+        <div id="lista-jogos">
+            <!-- Os jogos aparecerão aqui via JavaScript -->
+        </div>
+    </div>
+</div>
+
+<script>
+    const API_URL = 'http://localhost:8081/jogos';
+
+    async function carregarJogos() {
+        try {
+            const response = await fetch(API_URL);
+            const jogos = await response.json();
+            
+            const divLista = document.getElementById('lista-jogos');
+            divLista.innerHTML = ''; 
+            
+            if(jogos.length === 0) {
+                divLista.innerHTML = '<p style="text-align:center; color:#8f98a0; font-style:italic;">Nenhum jogo na biblioteca.</p>';
+                return;
+            }
+
+            jogos.forEach(jogo => {
+                divLista.innerHTML += `
+                    <div class="game-item">
+                        <div class="game-info">
+                            <strong>${jogo.nome}</strong>
+                            <span>GÊNERO: ${jogo.genero} &nbsp;|&nbsp; PLATAFORMA: ${jogo.plataforma}</span>
+                        </div>
+                        <button class="btn-delete" onclick="deletarJogo(${jogo.id})">Remover</button>
+                    </div>
+                `;
+            });
+        } catch (error) {
+            console.error("Erro ao carregar jogos:", error);
+        }
+    }
+
+    async function salvarJogo() {
+        const nome = document.getElementById('nome').value;
+        const genero = document.getElementById('genero').value;
+        const plataforma = document.getElementById('plataforma').value;
+
+        if(!nome || !genero || !plataforma) {
+            alert("Preencha todos os detalhes do jogo!");
+            return;
+        }
+
+        const novoJogo = { nome: nome, genero: genero, plataforma: plataforma };
+
+        try {
+            await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(novoJogo)
+            });
+
+            document.getElementById('nome').value = '';
+            document.getElementById('genero').value = '';
+            document.getElementById('plataforma').value = '';
+            carregarJogos();
+        } catch (error) {
+            console.error("Erro ao salvar jogo:", error);
+        }
+    }
+
+    async function deletarJogo(id) {
+        if(confirm("Deseja remover este jogo da sua biblioteca?")) {
+            try {
+                await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+                carregarJogos(); 
+            } catch (error) {
+                console.error("Erro ao excluir jogo:", error);
+            }
+        }
+    }
+
+    window.onload = carregarJogos;
+</script>
+
+</body>
+</html>
