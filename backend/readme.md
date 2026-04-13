@@ -10,19 +10,19 @@
 - ✅ **Testado e funcionando 100%**
   
 ## 📱 Como testar
-# 1. Backend
+## 1. Backend
 cd backend
 mvn clean spring-boot:run
 # Roda na porta 8081 ✓
 
-# 2. Frontend  
-# Abra http://localhost:8081
+## 2. Frontend  
+- Abra http://localhost:8081
 
-# 3. Fluxo completo:
-# - Acesse tela de login
-# - Faça login/cadastro de usuário
-# - Acesse CRUD de jogos
-# - Cadastre/liste/remova jogos
+## 3. Fluxo completo:
+ - Acesse tela de login
+ - Faça login/cadastro de usuário
+ - Acesse CRUD de jogos
+ - Cadastre/liste/remova jogos
 
 ## 📁 Estrutura
 gamers-social/
