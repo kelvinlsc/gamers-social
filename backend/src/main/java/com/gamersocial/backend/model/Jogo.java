@@ -1,11 +1,13 @@
-package com.gamerssocial.backend.model;
+package com.gamersocial.backend.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "jogos")
 public class Jogo {
 
     @Id

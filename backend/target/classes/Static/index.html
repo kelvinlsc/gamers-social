@@ -4,171 +4,267 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gamers Social</title>
-    <!-- Ícone da aba do navegador (favicon) -->
     <link rel="icon" href="https://store.steampowered.com/favicon.ico" type="image/x-icon">
     <style>
-        /* Paleta de cores baseada na Steam */
         body { 
             font-family: 'Motiva Sans', 'Segoe UI', Arial, sans-serif; 
-            background-color: #1b2838; /* Azul escuro fundo da Steam */
-            color: #c6d4df; /* Texto padrão cinza claro */
-            margin: 0; 
-            padding: 20px; 
+            background: linear-gradient(135deg, #1b2838 0%, #171a21 100%); 
+            color: #c6d4df; margin: 0; padding: 20px; min-height: 100vh;
         }
         
         .container { 
-            max-width: 650px; 
-            margin: auto; 
-            background: rgba(0, 0, 0, 0.2); /* Fundo da caixa escurecido */
-            padding: 30px; 
-            border-radius: 4px; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5); 
+            max-width: 500px; margin: auto; 
+            background: rgba(0,0,0,0.4); padding: 40px; 
+            border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px); border: 1px solid rgba(102,192,244,0.2);
         }
 
-        /* Cabeçalho */
         .header-title {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            color: #ffffff;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            display: flex; align-items: center; justify-content: center;
+            gap: 15px; color: #ffffff; font-size: 2.2em; margin-bottom: 30px;
+            text-transform: uppercase; letter-spacing: 2px; text-align: center;
         }
-
-        .header-title img {
-            width: 40px;
-            height: 40px;
-        }
+        .header-title svg { width: 50px; height: 50px; filter: drop-shadow(0 0 10px rgba(102,192,244,0.5)); }
 
         h2 { 
-            color: #ffffff; 
-            border-bottom: 1px solid #2a475e; 
-            padding-bottom: 10px;
-            font-size: 18px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: #ffffff; border-bottom: 2px solid #66c0f4; 
+            padding-bottom: 15px; font-size: 20px; margin-bottom: 25px;
+            text-transform: uppercase; letter-spacing: 1px;
         }
 
-        /* Inputs de texto estilo Steam */
-        .form-group { margin-bottom: 15px; }
+        .form-group { margin-bottom: 20px; }
         input { 
-            width: 100%; 
-            padding: 12px; 
-            margin-top: 5px; 
-            background-color: #323e4c; /* Fundo do input */
-            border: 1px solid #2a475e; 
-            border-radius: 3px; 
-            color: #ffffff;
-            box-sizing: border-box; 
+            width: 100%; padding: 16px; background: rgba(50,62,76,0.8); 
+            border: 2px solid #2a475e; border-radius: 8px; 
+            color: #ffffff; font-size: 16px; box-sizing: border-box;
+            transition: all 0.3s ease; backdrop-filter: blur(5px);
         }
         input:focus {
-            outline: none;
-            border-color: #66c0f4;
-            background-color: #3b4959;
+            outline: none; border-color: #66c0f4; 
+            background: rgba(59,73,89,0.9); box-shadow: 0 0 20px rgba(102,192,244,0.3);
         }
         input::placeholder { color: #8f98a0; }
 
-        /* Botão principal estilo Steam (Azul degradê) */
         button { 
-            background: linear-gradient(to right, #47bfff 5%, #1a44c2 60%);
-            background-position: 25%;
-            background-size: 330% 100%;
-            color: white; 
-            border: none; 
-            padding: 12px; 
-            width: 100%; 
-            border-radius: 2px; 
-            cursor: pointer; 
-            font-size: 16px; 
-            font-weight: bold;
-            margin-top: 10px; 
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #47bfff 0%, #1a44c2 100%);
+            color: white; border: none; padding: 16px; width: 100%; 
+            border-radius: 8px; cursor: pointer; font-size: 18px; 
+            font-weight: bold; margin-top: 10px; transition: all 0.3s ease;
+            text-transform: uppercase; letter-spacing: 1px; position: relative;
+            overflow: hidden;
         }
         button:hover { 
-            background-position: 100%;
-            transform: scale(1.02);
+            transform: translateY(-3px); box-shadow: 0 15px 35px rgba(71,191,255,0.4);
+        }
+        button:active { transform: translateY(-1px); }
+
+        .link-btn {
+            background: rgba(255,255,255,0.1); color: #66c0f4;
+            text-decoration: none; text-align: center; padding: 14px;
+            border-radius: 8px; border: 2px solid rgba(102,192,244,0.3);
+            transition: all 0.3s ease; font-weight: bold; display: block;
+            text-transform: uppercase; letter-spacing: 1px;
+        }
+        .link-btn:hover { 
+            background: rgba(102,192,244,0.2); transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102,192,244,0.3);
         }
 
-        /* Lista de Jogos */
-        .game-list { margin-top: 40px; }
-        .game-item { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            background: rgba(0, 0, 0, 0.4); 
-            padding: 15px; 
-            border-radius: 2px; 
-            border-left: 4px solid #66c0f4; 
-            margin-bottom: 10px; 
-            transition: background 0.2s;
+        .result { 
+            margin-top: 20px; padding: 15px; border-radius: 8px; 
+            border-left: 5px solid; font-weight: bold; display: none;
+            backdrop-filter: blur(10px);
         }
-        .game-item:hover { background: rgba(0, 0, 0, 0.6); }
-        
-        .game-info strong { font-size: 18px; display: block; color: #ffffff; }
-        .game-info span { color: #8f98a0; font-size: 13px; margin-top: 4px; display: block;}
-        
-        /* Botão Excluir */
+        .success { background: rgba(40,167,69,0.3); border-color: #28a745; color: #28a745; }
+        .error { background: rgba(220,53,69,0.3); border-color: #dc3545; color: #dc3545; }
+
+        .section { display: none; }
+        .section.active { display: block; animation: slideIn 0.5s ease; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        .user-item, .game-item { 
+            background: rgba(0,0,0,0.6); padding: 18px; 
+            border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #66c0f4;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .user-info strong, .game-info strong { color: #ffffff; font-size: 18px; display: block; }
+        .user-info span, .game-info span { color: #8f98a0; font-size: 14px; }
+
         .btn-delete { 
-            background: rgba(255, 255, 255, 0.1); 
-            width: auto; 
-            padding: 6px 12px; 
-            font-size: 12px; 
-            margin-top: 0; 
-            color: #8f98a0;
-            border-radius: 2px;
+            background: rgba(255,255,255,0.1); width: auto; padding: 8px 16px; 
+            font-size: 12px; color: #8f98a0; border-radius: 6px;
         }
-        .btn-delete:hover { 
-            background: #d9534f; 
-            color: white;
-            transform: scale(1);
-        }
+        .btn-delete:hover { background: #d9534f; color: white; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header-title">
-        <!-- Ícone genérico de controle -->
-        <svg fill="#ffffff" width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 9 18.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-        Gamers Social
+    <!-- TELA 1: LOGIN (PRIMEIRA) -->
+    <div id="tela-login" class="section active">
+        <div class="header-title">
+            <svg fill="#ffffff" width="50" height="50" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Gamers Social
+        </div>
+        
+        <h2>🔐 Entrar</h2>
+        <div class="form-group">
+            <input type="email" id="loginEmail" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input type="password" id="loginPassword" placeholder="Senha">
+        </div>
+        <button onclick="fazerLogin()">Entrar</button>
+        <div id="loginResult" class="result"></div>
+        
+        <a href="#" class="link-btn" onclick="mostrarCadastro()">
+            👤 Ainda não tem conta? Cadastre-se
+        </a>
     </div>
-    
-    <h2>Adicionar à Biblioteca</h2>
-    <div class="form-group">
-        <input type="text" id="nome" placeholder="Título (ex: God of War)">
-    </div>
-    <div class="form-group">
-        <input type="text" id="genero" placeholder="Gênero (ex: RPG, Ação)">
-    </div>
-    <div class="form-group">
-        <input type="text" id="plataforma" placeholder="Plataforma (ex: PC, PS5)">
-    </div>
-    <button onclick="salvarJogo()">+ Adicionar Jogo</button>
 
-    <div class="game-list">
-        <h2>Minha Coleção</h2>
-        <div id="lista-jogos">
-            <!-- Os jogos aparecerão aqui via JavaScript -->
+    <!-- TELA 2: CADASTRO -->
+    <div id="tela-cadastro" class="section">
+        <div class="header-title">
+            <svg fill="#ffffff" width="50" height="50" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            Gamers Social
+        </div>
+        
+        <h2>👤 Cadastro</h2>
+        <div class="form-group">
+            <input type="text" id="userName" placeholder="Nome">
+        </div>
+        <div class="form-group">
+            <input type="email" id="userEmail" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input type="password" id="userPassword" placeholder="Senha">
+        </div>
+        <button onclick="cadastrarUsuario()">+ Cadastrar Usuário</button>
+        <div id="cadastroResult" class="result"></div>
+        
+        <a href="#" class="link-btn" onclick="mostrarLogin()">
+            🔙 Voltar para Login
+        </a>
+    </div>
+
+    <!-- TELA 3: BIBLIOTECA (SÓ DEPOIS DO LOGIN) -->
+    <div id="tela-biblioteca" class="section">
+        <div class="header-title">
+            <svg fill="#ffffff" width="50" height="50" viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 9 18.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+            Minha Biblioteca
+        </div>
+        
+        <h2>+ Adicionar Jogo</h2>
+        <div class="form-group">
+            <input type="text" id="nome" placeholder="Título (ex: God of War)">
+        </div>
+        <div class="form-group">
+            <input type="text" id="genero" placeholder="Gênero (ex: RPG, Ação)">
+        </div>
+        <div class="form-group">
+            <input type="text" id="plataforma" placeholder="Plataforma (ex: PC, PS5)">
+        </div>
+        <button onclick="salvarJogo()">+ Adicionar Jogo</button>
+
+        <div style="margin-top: 40px;">
+            <h2>Minha Coleção</h2>
+            <div id="lista-jogos">
+                <!-- Jogos aparecerão aqui -->
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    const API_URL = 'http://localhost:8081/jogos';
+    const API_USERS = 'http://localhost:8081/users';
+    const API_JOGOS = 'http://localhost:8081/jogos';
+    let usuarioLogado = null;
 
+    // === NAVEGAÇÃO ===
+    function mostrarLogin() {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById('tela-login').classList.add('active');
+    }
+
+    function mostrarCadastro() {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById('tela-cadastro').classList.add('active');
+        limparFormularioUsuario();
+    }
+
+    function mostrarBiblioteca(nomeUsuario) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById('tela-biblioteca').classList.add('active');
+        usuarioLogado = nomeUsuario;
+        carregarJogos();
+    }
+
+    // === CADASTRO ===
+    async function cadastrarUsuario() {
+        const nome = document.getElementById('userName').value;
+        const email = document.getElementById('userEmail').value;
+        const senha = document.getElementById('userPassword').value;
+
+        if(!nome || !email || !senha) {
+            mostrarResultado('cadastroResult', '❌ Preencha todos os campos!', 'error');
+            return;
+        }
+
+        try {
+            const response = await fetch(API_USERS, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({name: nome, email: email, password: senha})
+            });
+
+            if (response.ok) {
+                mostrarResultado('cadastroResult', '✅ Usuário cadastrado! Faça login agora.', 'success');
+                setTimeout(mostrarLogin, 2000);
+            } else {
+                const error = await response.text();
+                mostrarResultado('cadastroResult', `❌ Erro: ${error}`, 'error');
+            }
+        } catch (error) {
+            mostrarResultado('cadastroResult', '❌ Erro de conexão', 'error');
+        }
+    }
+
+    // === LOGIN ===
+    async function fazerLogin() {
+        const email = document.getElementById('loginEmail').value;
+        const senha = document.getElementById('loginPassword').value;
+
+        if(!email || !senha) {
+            mostrarResultado('loginResult', '❌ Preencha email e senha!', 'error');
+            return;
+        }
+
+        try {
+            const response = await fetch(API_USERS);
+            const users = await response.json();
+            const user = users.find(u => u.email === email && u.password === senha);
+
+            if (user) {
+                mostrarResultado('loginResult', `✅ Bem-vindo, ${user.name}!`, 'success');
+                setTimeout(() => mostrarBiblioteca(user.name), 1500);
+            } else {
+                mostrarResultado('loginResult', '❌ Email ou senha incorretos!', 'error');
+            }
+        } catch (error) {
+            mostrarResultado('loginResult', '❌ Erro ao conectar', 'error');
+        }
+    }
+
+    // === JOGOS ===
     async function carregarJogos() {
         try {
-            const response = await fetch(API_URL);
+            const response = await fetch(API_JOGOS);
             const jogos = await response.json();
-            
             const divLista = document.getElementById('lista-jogos');
-            divLista.innerHTML = ''; 
-            
+            divLista.innerHTML = '';
+
             if(jogos.length === 0) {
-                divLista.innerHTML = '<p style="text-align:center; color:#8f98a0; font-style:italic;">Nenhum jogo na biblioteca.</p>';
+                divLista.innerHTML = '<p style="text-align:center;color:#8f98a0;font-style:italic;">Nenhum jogo na biblioteca. Adicione o primeiro!</p>';
                 return;
             }
 
@@ -177,7 +273,7 @@
                     <div class="game-item">
                         <div class="game-info">
                             <strong>${jogo.nome}</strong>
-                            <span>GÊNERO: ${jogo.genero} &nbsp;|&nbsp; PLATAFORMA: ${jogo.plataforma}</span>
+                            <span>Gênero: ${jogo.genero} | Plataforma: ${jogo.plataforma}</span>
                         </div>
                         <button class="btn-delete" onclick="deletarJogo(${jogo.id})">Remover</button>
                     </div>
@@ -194,40 +290,60 @@
         const plataforma = document.getElementById('plataforma').value;
 
         if(!nome || !genero || !plataforma) {
-            alert("Preencha todos os detalhes do jogo!");
+            alert("Preencha todos os campos do jogo!");
             return;
         }
 
-        const novoJogo = { nome: nome, genero: genero, plataforma: plataforma };
-
         try {
-            await fetch(API_URL, {
+            await fetch(API_JOGOS, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(novoJogo)
+                body: JSON.stringify({nome: nome, genero: genero, plataforma: plataforma})
             });
-
             document.getElementById('nome').value = '';
             document.getElementById('genero').value = '';
             document.getElementById('plataforma').value = '';
             carregarJogos();
         } catch (error) {
-            console.error("Erro ao salvar jogo:", error);
+            console.error("Erro ao salvar:", error);
         }
     }
 
     async function deletarJogo(id) {
-        if(confirm("Deseja remover este jogo da sua biblioteca?")) {
+        if(confirm("Remover este jogo?")) {
             try {
-                await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
-                carregarJogos(); 
+                await fetch(`${API_JOGOS}/${id}`, { method: 'DELETE' });
+                carregarJogos();
             } catch (error) {
-                console.error("Erro ao excluir jogo:", error);
+                console.error("Erro ao deletar:", error);
             }
         }
     }
 
-    window.onload = carregarJogos;
+    function limparFormularioUsuario() {
+        document.getElementById('userName').value = '';
+        document.getElementById('userEmail').value = '';
+        document.getElementById('userPassword').value = '';
+    }
+
+    function mostrarResultado(id, msg, tipo) {
+        const div = document.getElementById(id);
+        div.textContent = msg;
+        div.className = `result ${tipo}`;
+        div.style.display = 'block';
+        setTimeout(() => div.style.display = 'none', 4000);
+    }
+
+    // Enter nas inputs
+    document.addEventListener('keypress', function(e) {
+        if(e.key === 'Enter') {
+            if(document.getElementById('tela-login').classList.contains('active')) {
+                fazerLogin();
+            } else if(document.getElementById('tela-cadastro').classList.contains('active')) {
+                cadastrarUsuario();
+            }
+        }
+    });
 </script>
 
 </body>
