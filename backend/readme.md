@@ -13,7 +13,7 @@
 ## 1. Backend
 cd backend
 mvn clean spring-boot:run
-# Roda na porta 8081 ✓
+Roda na porta 8081 ✓
 
 ## 2. Frontend  
 - Abra http://localhost:8081
