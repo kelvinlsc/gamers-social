@@ -1,4 +1,4 @@
-# 🕹️ Gamers Social - AC2
+# 🕹️ Gamers Social - AC3
 
 **Projeto Fullstack desenvolvido em Spring Boot + Frontend HTML/CSS/JS**
 
