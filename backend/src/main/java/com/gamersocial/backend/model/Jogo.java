@@ -1,10 +1,9 @@
 package com.gamersocial.backend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "jogos")
@@ -17,6 +16,10 @@ public class Jogo {
     private String nome;
     private String genero;
     private String plataforma;
+
+    @OneToMany(mappedBy = "jogo", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Avaliacao> avaliacoes = new ArrayList<>();
 
     public Jogo() {
     }
@@ -51,5 +54,13 @@ public class Jogo {
 
     public void setPlataforma(String plataforma) {
         this.plataforma = plataforma;
+    }
+
+    public List<Avaliacao> getAvaliacoes() {
+        return avaliacoes;
+    }
+
+    public void setAvaliacoes(List<Avaliacao> avaliacoes) {
+        this.avaliacoes = avaliacoes;
     }
 }
