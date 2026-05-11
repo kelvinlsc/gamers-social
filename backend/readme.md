@@ -3,11 +3,11 @@
 **Projeto Fullstack desenvolvido em Spring Boot + Frontend HTML/CSS/JS**
 
 ## 🚀 Funcionalidades Implementadas
-- ✅ **Tela de Usuário separada** (Login/Cadastro)
-- ✅ **CRUD completo de Jogos** (Criar, Listar, Deletar) 
-- ✅ **Backend Spring Boot** com API REST (PostgreSQL)
-- ✅ **Frontend integrado** com tema Dark Mode (Steam Style)
-- ✅ **Testado e funcionando 100%**
+✅ Sistema de Avaliações: Entidade Avaliacao com relacionamento Many-to-One (Usuários podem avaliar jogos com 1 a 5 estrelas).
+✅ Cálculo de Média: Cards de jogos no Frontend agora exibem a média de estrelas em tempo real.
+✅ Busca Inteligente: Implementação de Custom Queries no Repository para filtrar jogos por nome ou gênero.
+✅ Barra de Pesquisa: Interface integrada no Frontend para localização rápida de títulos.
+✅ Backend Evoluído: Endpoints específicos para salvar e listar o histórico de avaliações.
   
 ## 📱 Como testar
 ## 1. Backend
@@ -26,13 +26,18 @@ Roda na porta 8081 ✓
 
 ## 📁 Estrutura
 gamers-social/
-├── backend/ # Spring Boot API
-│ ├── src/main/java/com/gamersocial/
-│ │ ├── model/Usuario.java
-│ │ ├── model/Jogo.java
-│ │ └── controllers/
-│ ├── static/index.html # Frontend (Login + Jogos)
-│ └── pom.xml
+├── .vscode/                 # Configurações do editor
+├── backend/                 # Core da aplicação (Spring Boot)
+│   ├── src/main/java/com/gamersocial/backend/
+│   │   ├── controller/      # Endpoints (Avaliacao, Jogo, Users)
+│   │   ├── model/           # Entidades (Avaliacao, Jogo, User)
+│   │   ├── repository/      # Interfaces de acesso ao banco (JPA)
+│   │   └── GamersSocialApplication.java
+│   ├── src/main/resources/
+│   │   ├── Static/          # Frontend (index.html)
+│   │   └── application.properties
+│   └── pom.xml              # Dependências Maven
+└── readme.md
 
 
 ## 🛠️ **Stack Tecnológica**
