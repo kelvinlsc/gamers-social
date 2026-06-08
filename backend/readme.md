@@ -3,11 +3,11 @@
 **Projeto Fullstack desenvolvido em Spring Boot + Frontend HTML/CSS/JS**
 
 ## 🚀 Funcionalidades Implementadas
-✅ Sistema de Avaliações: Entidade Avaliacao com relacionamento Many-to-One (Usuários podem avaliar jogos com 1 a 5 estrelas).
-✅ Cálculo de Média: Cards de jogos no Frontend agora exibem a média de estrelas em tempo real.
-✅ Busca Inteligente: Implementação de Custom Queries no Repository para filtrar jogos por nome ou gênero.
-✅ Barra de Pesquisa: Interface integrada no Frontend para localização rápida de títulos.
-✅ Backend Evoluído: Endpoints específicos para salvar e listar o histórico de avaliações.
+✅ Edição do Perfil: Nome e Email
+✅ Edição do jogo: Nome, Gênero e Plataforma
+✅ Melhorado interface das avaliação dos jogos
+✅ Criado os documentos de Caso de uso e UML
+
   
 ## 📱 Como testar
 ## 1. Backend
