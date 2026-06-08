@@ -6,108 +6,278 @@
     <title>Gamers Social</title>
     <link rel="icon" href="https://store.steampowered.com/favicon.ico" type="image/x-icon">
     <style>
-        body { 
-            font-family: 'Motiva Sans', 'Segoe UI', Arial, sans-serif; 
-            background: linear-gradient(135deg, #1b2838 0%, #171a21 100%); 
-            color: #c6d4df; margin: 0; padding: 20px; min-height: 100vh;
+        body {
+            font-family: 'Motiva Sans', 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1b2838 0%, #171a21 100%);
+            color: #c6d4df;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
         }
-        
-        .container { 
-            max-width: 500px; margin: auto; 
-            background: rgba(0,0,0,0.4); padding: 40px; 
-            border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-            backdrop-filter: blur(10px); border: 1px solid rgba(102,192,244,0.2);
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: rgba(0,0,0,0.4);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(102,192,244,0.2);
         }
 
         .header-title {
-            display: flex; align-items: center; justify-content: center;
-            gap: 15px; color: #ffffff; font-size: 2.2em; margin-bottom: 30px;
-            text-transform: uppercase; letter-spacing: 2px; text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            color: #ffffff;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
         }
-        .header-title svg { width: 50px; height: 50px; filter: drop-shadow(0 0 10px rgba(102,192,244,0.5)); }
 
-        h2 { 
-            color: #ffffff; border-bottom: 2px solid #66c0f4; 
-            padding-bottom: 15px; font-size: 20px; margin-bottom: 25px;
-            text-transform: uppercase; letter-spacing: 1px;
+        .header-title svg {
+            width: 50px;
+            height: 50px;
+            filter: drop-shadow(0 0 10px rgba(102,192,244,0.5));
         }
 
-        .form-group { margin-bottom: 20px; }
-        input { 
-            width: 100%; padding: 16px; background: rgba(50,62,76,0.8); 
-            border: 2px solid #2a475e; border-radius: 8px; 
-            color: #ffffff; font-size: 16px; box-sizing: border-box;
-            transition: all 0.3s ease; backdrop-filter: blur(5px);
+        h2 {
+            color: #ffffff;
+            border-bottom: 2px solid #66c0f4;
+            padding-bottom: 15px;
+            font-size: 20px;
+            margin-bottom: 25px;
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        input:focus {
-            outline: none; border-color: #66c0f4; 
-            background: rgba(59,73,89,0.9); box-shadow: 0 0 20px rgba(102,192,244,0.3);
-        }
-        input::placeholder { color: #8f98a0; }
 
-        button { 
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 16px;
+            background: rgba(50,62,76,0.8);
+            border: 2px solid #2a475e;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 16px;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #66c0f4;
+            background: rgba(59,73,89,0.9);
+            box-shadow: 0 0 20px rgba(102,192,244,0.3);
+        }
+
+        input::placeholder {
+            color: #8f98a0;
+        }
+
+        button {
             background: linear-gradient(135deg, #47bfff 0%, #1a44c2 100%);
-            color: white; border: none; padding: 16px; width: 100%; 
-            border-radius: 8px; cursor: pointer; font-size: 18px; 
-            font-weight: bold; margin-top: 10px; transition: all 0.3s ease;
-            text-transform: uppercase; letter-spacing: 1px; position: relative;
-            overflow: hidden;
+            color: white;
+            border: none;
+            padding: 14px 16px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        button:hover { 
-            transform: translateY(-3px); box-shadow: 0 15px 35px rgba(71,191,255,0.4);
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(71,191,255,0.4);
         }
-        button:active { transform: translateY(-1px); }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+            color: #66c0f4;
+            border: 1px solid rgba(102,192,244,0.3);
+        }
+
+        .btn-delete {
+            background: rgba(255,255,255,0.1);
+            width: auto;
+            padding: 8px 14px;
+            font-size: 12px;
+            color: #8f98a0;
+            border-radius: 6px;
+            margin-top: 0;
+        }
+
+        .btn-delete:hover {
+            background: #d9534f;
+            color: white;
+        }
+
+        .btn-edit {
+            background: rgba(102,192,244,0.15);
+            width: auto;
+            padding: 8px 14px;
+            font-size: 12px;
+            color: #66c0f4;
+            border-radius: 6px;
+            margin-top: 0;
+        }
+
+        .btn-edit:hover {
+            background: #66c0f4;
+            color: #000;
+        }
+
+        .btn-inline {
+            width: auto;
+            padding: 10px 14px;
+            font-size: 12px;
+            margin-top: 0;
+        }
 
         .link-btn {
-            background: rgba(255,255,255,0.1); color: #66c0f4;
-            text-decoration: none; text-align: center; padding: 14px;
-            border-radius: 8px; border: 2px solid rgba(102,192,244,0.3);
-            transition: all 0.3s ease; font-weight: bold; display: block;
-            text-transform: uppercase; letter-spacing: 1px;
-        }
-        .link-btn:hover { 
-            background: rgba(102,192,244,0.2); transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102,192,244,0.3);
+            background: rgba(255,255,255,0.1);
+            color: #66c0f4;
+            text-decoration: none;
+            text-align: center;
+            padding: 14px;
+            border-radius: 8px;
+            border: 2px solid rgba(102,192,244,0.3);
+            transition: all 0.3s ease;
+            font-weight: bold;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
         }
 
-        .result { 
-            margin-top: 20px; padding: 15px; border-radius: 8px; 
-            border-left: 5px solid; font-weight: bold; display: none;
-            backdrop-filter: blur(10px);
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 5px solid;
+            font-weight: bold;
+            display: none;
         }
+
         .success { background: rgba(40,167,69,0.3); border-color: #28a745; color: #28a745; }
         .error { background: rgba(220,53,69,0.3); border-color: #dc3545; color: #dc3545; }
 
         .section { display: none; }
-        .section.active { display: block; animation: slideIn 0.5s ease; }
-        @keyframes slideIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .section.active { display: block; }
 
-        .user-item, .game-item { 
-            background: rgba(0,0,0,0.6); padding: 18px; 
-            border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #66c0f4;
-            display: flex; justify-content: space-between; align-items: center;
+        .game-item {
+            background: rgba(0,0,0,0.6);
+            padding: 18px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #66c0f4;
         }
-        .user-info strong, .game-info strong { color: #ffffff; font-size: 18px; display: block; }
-        .user-info span, .game-info span { color: #8f98a0; font-size: 14px; }
 
-        .btn-delete { 
-            background: rgba(255,255,255,0.1); width: auto; padding: 8px 16px; 
-            font-size: 12px; color: #8f98a0; border-radius: 6px;
+        .game-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
         }
-        .btn-delete:hover { background: #d9534f; color: white; }
+
+        .game-info strong {
+            color: #ffffff;
+            font-size: 18px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .game-info span {
+            color: #8f98a0;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .perfil-box {
+            background: rgba(0,0,0,0.35);
+            padding: 18px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(102,192,244,0.15);
+        }
+
+        .stars {
+            display: flex;
+            gap: 6px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .stars button {
+            width: auto;
+            margin: 0;
+            padding: 8px 10px;
+            font-size: 18px;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .stars button.active {
+            background: #ffd166;
+            color: #000;
+        }
+
+        .top-bar {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 20px;
+            }
+
+            .game-top {
+                flex-direction: column;
+            }
+
+            .top-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .actions {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <!-- TELA 1: LOGIN (PRIMEIRA) -->
     <div id="tela-login" class="section active">
         <div class="header-title">
             <svg fill="#ffffff" width="50" height="50" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
             Gamers Social
         </div>
-        
-        <h2>🔐 Entrar</h2>
+
+        <h2>Entrar</h2>
         <div class="form-group">
             <input type="email" id="loginEmail" placeholder="Email">
         </div>
@@ -116,20 +286,17 @@
         </div>
         <button onclick="fazerLogin()">Entrar</button>
         <div id="loginResult" class="result"></div>
-        
-        <a href="#" class="link-btn" onclick="mostrarCadastro()">
-            👤 Ainda não tem conta? Cadastre-se
-        </a>
+
+        <a href="#" class="link-btn" onclick="mostrarCadastro()">Ainda não tem conta? Cadastre-se</a>
     </div>
 
-    <!-- TELA 2: CADASTRO -->
     <div id="tela-cadastro" class="section">
         <div class="header-title">
             <svg fill="#ffffff" width="50" height="50" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
             Gamers Social
         </div>
-        
-        <h2>👤 Cadastro</h2>
+
+        <h2>Cadastro</h2>
         <div class="form-group">
             <input type="text" id="userName" placeholder="Nome">
         </div>
@@ -139,22 +306,30 @@
         <div class="form-group">
             <input type="password" id="userPassword" placeholder="Senha">
         </div>
-        <button onclick="cadastrarUsuario()">+ Cadastrar Usuário</button>
+        <button onclick="cadastrarUsuario()">Cadastrar Usuário</button>
         <div id="cadastroResult" class="result"></div>
-        
-        <a href="#" class="link-btn" onclick="mostrarLogin()">
-            🔙 Voltar para Login
-        </a>
+
+        <a href="#" class="link-btn" onclick="mostrarLogin()">Voltar para Login</a>
     </div>
 
-    <!-- TELA 3: BIBLIOTECA (SÓ DEPOIS DO LOGIN) -->
     <div id="tela-biblioteca" class="section">
         <div class="header-title">
             <svg fill="#ffffff" width="50" height="50" viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm3-3c-.83 0-1.5-.67-1.5-1.5S17.67 9 18.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
             Minha Biblioteca
         </div>
-        
-        <h2>+ Adicionar Jogo</h2>
+
+        <div class="perfil-box">
+            <h2>Meu Perfil</h2>
+            <div class="form-group">
+                <input type="text" id="perfilName" placeholder="Nome do perfil">
+            </div>
+            <div class="form-group">
+                <input type="email" id="perfilEmail" placeholder="Email do perfil">
+            </div>
+            <button class="btn-secondary" onclick="editarPerfil()">Salvar Perfil</button>
+        </div>
+
+        <h2>Adicionar Jogo</h2>
         <div class="form-group">
             <input type="text" id="nome" placeholder="Título (ex: God of War)">
         </div>
@@ -164,13 +339,17 @@
         <div class="form-group">
             <input type="text" id="plataforma" placeholder="Plataforma (ex: PC, PS5)">
         </div>
-        <button onclick="salvarJogo()">+ Adicionar Jogo</button>
+        <button onclick="salvarJogo()">Adicionar Jogo</button>
 
         <div style="margin-top: 40px;">
             <h2>Minha Coleção</h2>
-            <div id="lista-jogos">
-                <!-- Jogos aparecerão aqui -->
+
+            <div class="top-bar">
+                <input type="text" id="campoBusca" placeholder="Buscar por nome ou gênero..." oninput="buscarJogos()">
+                <button class="btn-secondary btn-inline" onclick="carregarJogos()">Limpar Busca</button>
             </div>
+
+            <div id="lista-jogos"></div>
         </div>
     </div>
 </div>
@@ -178,9 +357,10 @@
 <script>
     const API_USERS = 'http://localhost:8081/users';
     const API_JOGOS = 'http://localhost:8081/jogos';
+    const API_AVALIACOES = 'http://localhost:8081/avaliacoes';
+
     let usuarioLogado = null;
 
-    // === NAVEGAÇÃO ===
     function mostrarLogin() {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         document.getElementById('tela-login').classList.add('active');
@@ -192,21 +372,27 @@
         limparFormularioUsuario();
     }
 
-    function mostrarBiblioteca(nomeUsuario) {
+    function mostrarBiblioteca(usuario) {
         document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
         document.getElementById('tela-biblioteca').classList.add('active');
-        usuarioLogado = nomeUsuario;
+        usuarioLogado = usuario;
+        preencherPerfil();
         carregarJogos();
     }
 
-    // === CADASTRO ===
+    function preencherPerfil() {
+        if (!usuarioLogado) return;
+        document.getElementById('perfilName').value = usuarioLogado.name || '';
+        document.getElementById('perfilEmail').value = usuarioLogado.email || '';
+    }
+
     async function cadastrarUsuario() {
         const nome = document.getElementById('userName').value;
         const email = document.getElementById('userEmail').value;
         const senha = document.getElementById('userPassword').value;
 
-        if(!nome || !email || !senha) {
-            mostrarResultado('cadastroResult', '❌ Preencha todos os campos!', 'error');
+        if (!nome || !email || !senha) {
+            mostrarResultado('cadastroResult', 'Preencha todos os campos!', 'error');
             return;
         }
 
@@ -214,28 +400,27 @@
             const response = await fetch(API_USERS, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({name: nome, email: email, password: senha})
+                body: JSON.stringify({ name: nome, email: email, password: senha })
             });
 
             if (response.ok) {
-                mostrarResultado('cadastroResult', '✅ Usuário cadastrado! Faça login agora.', 'success');
-                setTimeout(mostrarLogin, 2000);
+                mostrarResultado('cadastroResult', 'Usuário cadastrado! Faça login agora.', 'success');
+                setTimeout(mostrarLogin, 1500);
             } else {
                 const error = await response.text();
-                mostrarResultado('cadastroResult', `❌ Erro: ${error}`, 'error');
+                mostrarResultado('cadastroResult', `Erro: ${error}`, 'error');
             }
         } catch (error) {
-            mostrarResultado('cadastroResult', '❌ Erro de conexão', 'error');
+            mostrarResultado('cadastroResult', 'Erro de conexão', 'error');
         }
     }
 
-    // === LOGIN ===
     async function fazerLogin() {
         const email = document.getElementById('loginEmail').value;
         const senha = document.getElementById('loginPassword').value;
 
-        if(!email || !senha) {
-            mostrarResultado('loginResult', '❌ Preencha email e senha!', 'error');
+        if (!email || !senha) {
+            mostrarResultado('loginResult', 'Preencha email e senha!', 'error');
             return;
         }
 
@@ -245,79 +430,215 @@
             const user = users.find(u => u.email === email && u.password === senha);
 
             if (user) {
-                mostrarResultado('loginResult', `✅ Bem-vindo, ${user.name}!`, 'success');
-                setTimeout(() => mostrarBiblioteca(user.name), 1500);
+                mostrarResultado('loginResult', `Bem-vindo, ${user.name}!`, 'success');
+                setTimeout(() => mostrarBiblioteca(user), 1200);
             } else {
-                mostrarResultado('loginResult', '❌ Email ou senha incorretos!', 'error');
+                mostrarResultado('loginResult', 'Email ou senha incorretos!', 'error');
             }
         } catch (error) {
-            mostrarResultado('loginResult', '❌ Erro ao conectar', 'error');
+            mostrarResultado('loginResult', 'Erro ao conectar', 'error');
         }
     }
 
-    // === JOGOS ===
-    async function carregarJogos() {
-        try {
-            const response = await fetch(API_JOGOS);
-            const jogos = await response.json();
-            const divLista = document.getElementById('lista-jogos');
-            divLista.innerHTML = '';
-
-            if(jogos.length === 0) {
-                divLista.innerHTML = '<p style="text-align:center;color:#8f98a0;font-style:italic;">Nenhum jogo na biblioteca. Adicione o primeiro!</p>';
-                return;
-            }
-
-            jogos.forEach(jogo => {
-                divLista.innerHTML += `
-                    <div class="game-item">
-                        <div class="game-info">
-                            <strong>${jogo.nome}</strong>
-                            <span>Gênero: ${jogo.genero} | Plataforma: ${jogo.plataforma}</span>
-                        </div>
-                        <button class="btn-delete" onclick="deletarJogo(${jogo.id})">Remover</button>
-                    </div>
-                `;
-            });
-        } catch (error) {
-            console.error("Erro ao carregar jogos:", error);
+    async function editarPerfil() {
+        if (!usuarioLogado || !usuarioLogado.id) {
+            alert('Usuário não está logado corretamente.');
+            return;
         }
-    }
 
-    async function salvarJogo() {
-        const nome = document.getElementById('nome').value;
-        const genero = document.getElementById('genero').value;
-        const plataforma = document.getElementById('plataforma').value;
+        const name = document.getElementById('perfilName').value.trim();
+        const email = document.getElementById('perfilEmail').value.trim();
 
-        if(!nome || !genero || !plataforma) {
-            alert("Preencha todos os campos do jogo!");
+        if (!name || !email) {
+            alert('Preencha nome e email do perfil.');
             return;
         }
 
         try {
-            await fetch(API_JOGOS, {
+            const response = await fetch(`${API_USERS}/${usuarioLogado.id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    password: usuarioLogado.password
+                })
+            });
+
+            if (!response.ok) {
+                const erro = await response.text();
+                throw new Error(erro || 'Erro ao atualizar perfil');
+            }
+
+            const userAtualizado = await response.json();
+            usuarioLogado = userAtualizado;
+            preencherPerfil();
+            alert('Perfil atualizado com sucesso!');
+        } catch (error) {
+            alert('Erro ao atualizar perfil: ' + error.message);
+        }
+    }
+
+    async function carregarJogos() {
+        try {
+            const response = await fetch(API_JOGOS);
+            const jogos = await response.json();
+            renderizarJogos(jogos);
+        } catch (error) {
+            console.error('Erro ao carregar jogos:', error);
+        }
+    }
+
+    async function buscarJogos() {
+        const termo = document.getElementById('campoBusca').value.trim();
+
+        try {
+            const url = termo ? `${API_JOGOS}/busca?termo=${encodeURIComponent(termo)}` : API_JOGOS;
+            const response = await fetch(url);
+            const jogos = await response.json();
+            renderizarJogos(jogos);
+        } catch (error) {
+            console.error('Erro ao buscar jogos:', error);
+        }
+    }
+
+    async function salvarJogo() {
+        const nome = document.getElementById('nome').value.trim();
+        const genero = document.getElementById('genero').value.trim();
+        const plataforma = document.getElementById('plataforma').value.trim();
+
+        if (!nome || !genero || !plataforma) {
+            alert('Preencha todos os campos do jogo!');
+            return;
+        }
+
+        try {
+            const response = await fetch(API_JOGOS, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({nome: nome, genero: genero, plataforma: plataforma})
+                body: JSON.stringify({ nome, genero, plataforma })
             });
+
+            if (!response.ok) {
+                throw new Error('Erro ao salvar jogo');
+            }
+
             document.getElementById('nome').value = '';
             document.getElementById('genero').value = '';
             document.getElementById('plataforma').value = '';
             carregarJogos();
         } catch (error) {
-            console.error("Erro ao salvar:", error);
+            console.error('Erro ao salvar:', error);
+        }
+    }
+
+    async function editarJogo(id, nomeAtual, generoAtual, plataformaAtual) {
+        const novoNome = prompt('Editar nome do jogo:', nomeAtual);
+        if (novoNome === null) return;
+
+        const novoGenero = prompt('Editar gênero do jogo:', generoAtual);
+        if (novoGenero === null) return;
+
+        const novaPlataforma = prompt('Editar plataforma do jogo:', plataformaAtual);
+        if (novaPlataforma === null) return;
+
+        try {
+            const response = await fetch(`${API_JOGOS}/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    nome: novoNome.trim(),
+                    genero: novoGenero.trim(),
+                    plataforma: novaPlataforma.trim()
+                })
+            });
+
+            if (!response.ok) {
+                const erro = await response.text();
+                throw new Error(erro || 'Erro ao editar jogo');
+            }
+
+            carregarJogos();
+        } catch (error) {
+            alert('Erro ao editar jogo: ' + error.message);
         }
     }
 
     async function deletarJogo(id) {
-        if(confirm("Remover este jogo?")) {
+        if (confirm('Remover este jogo?')) {
             try {
                 await fetch(`${API_JOGOS}/${id}`, { method: 'DELETE' });
                 carregarJogos();
             } catch (error) {
-                console.error("Erro ao deletar:", error);
+                console.error('Erro ao deletar:', error);
             }
         }
+    }
+
+    async function avaliarJogo(jogoId, estrelas) {
+        if (!usuarioLogado || !usuarioLogado.id) {
+            alert('Faça login para avaliar.');
+            return;
+        }
+
+        try {
+            const response = await fetch(API_AVALIACOES, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    userId: usuarioLogado.id,
+                    jogoId: jogoId,
+                    estrelas: estrelas
+                })
+            });
+
+            if (!response.ok) {
+                const erro = await response.text();
+                throw new Error(erro || 'Erro ao avaliar jogo');
+            }
+
+            carregarJogos();
+        } catch (error) {
+            alert('Erro ao avaliar jogo: ' + error.message);
+        }
+    }
+
+    function renderizarJogos(jogos) {
+        const divLista = document.getElementById('lista-jogos');
+        divLista.innerHTML = '';
+
+        if (!jogos || jogos.length === 0) {
+            divLista.innerHTML = '<p style="text-align:center;color:#8f98a0;font-style:italic;">Nenhum jogo encontrado.</p>';
+            return;
+        }
+
+        jogos.forEach(jogo => {
+            divLista.innerHTML += `
+                <div class="game-item">
+                    <div class="game-top">
+                        <div class="game-info">
+                            <strong>${jogo.nome}</strong>
+                            <span>Gênero: ${jogo.genero} | Plataforma: ${jogo.plataforma}</span>
+                            <div class="stars">
+                                <button onclick="avaliarJogo(${jogo.id}, 1)">1★</button>
+                                <button onclick="avaliarJogo(${jogo.id}, 2)">2★</button>
+                                <button onclick="avaliarJogo(${jogo.id}, 3)">3★</button>
+                                <button onclick="avaliarJogo(${jogo.id}, 4)">4★</button>
+                                <button onclick="avaliarJogo(${jogo.id}, 5)">5★</button>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <button class="btn-edit" onclick="editarJogo(${jogo.id}, '${escapeAspas(jogo.nome)}', '${escapeAspas(jogo.genero)}', '${escapeAspas(jogo.plataforma)}')">Editar</button>
+                            <button class="btn-delete" onclick="deletarJogo(${jogo.id})">Remover</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    function escapeAspas(texto) {
+        return String(texto ?? '').replace(/'/g, "\\'");
     }
 
     function limparFormularioUsuario() {
@@ -334,17 +655,15 @@
         setTimeout(() => div.style.display = 'none', 4000);
     }
 
-    // Enter nas inputs
     document.addEventListener('keypress', function(e) {
-        if(e.key === 'Enter') {
-            if(document.getElementById('tela-login').classList.contains('active')) {
+        if (e.key === 'Enter') {
+            if (document.getElementById('tela-login').classList.contains('active')) {
                 fazerLogin();
-            } else if(document.getElementById('tela-cadastro').classList.contains('active')) {
+            } else if (document.getElementById('tela-cadastro').classList.contains('active')) {
                 cadastrarUsuario();
             }
         }
     });
 </script>
-
 </body>
 </html>
